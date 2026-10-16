@@ -1,0 +1,21 @@
+schema_version = "1.0.0"
+
+id = "sketch_to_hardsurface"
+version = "0.1.0"
+name = "Sketch to Hard Surface"
+tagline = "Turn sketches and references into clean hard-surface meshes"
+maintainer = "Antoine Belot"
+type = "add-on"
+
+website = "https://github.com/antoinebelot-lab/Blender_Plugin_Drawing"
+tags = ["Modeling", "Mesh", "Import-Export"]
+
+blender_version_min = "4.2.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+[permissions]
+files = "Load reference images from disk"
+
+[build]
+paths_exclude_pattern = ["__pycache__/", "*.pyc", "/.git/"]

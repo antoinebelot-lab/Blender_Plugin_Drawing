@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  core:
+    name: Tracing core (numpy)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install numpy pytest
+      - run: pytest tests/test_image_trace.py -q
+
+  blender:
+    name: Blender 5.2 (bpy module)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install numpy pytest bpy==5.2.2
+      - run: pytest tests -q
+      - run: python scripts/build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sketch_to_hardsurface-extension
+          path: dist/*.zip
